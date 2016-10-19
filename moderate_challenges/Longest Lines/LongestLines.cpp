@@ -44,12 +44,11 @@ vector<string> getLines(string fileName) {
 			inputs.push_back(line);
 		}
 	}
-
 	return inputs;
 
 }  //End getLines()
 
-vector<string> sortLines(vector<string> inputs) {
+void sortLines(vector<string> &inputs) {
 	auto range = inputs.size();
 	for (auto i = 0; i < range; i++) {
 		for (auto j = 0; j < range; j++) {
@@ -61,11 +60,9 @@ vector<string> sortLines(vector<string> inputs) {
 		}
 	}
 
-	return inputs;
-
 }  //End sortLines()
 
-vector<string> trimLines(vector<string> inputs) {
+void trimLines(vector<string> &inputs) {
 	string whitespace = " \t";
 	for (auto i = 0; i < inputs.size(); i++) {
 		string line = inputs.at(i);
@@ -76,8 +73,6 @@ vector<string> trimLines(vector<string> inputs) {
 		inputs.at(i) = line.substr(strBegin, strRange);
 	}
 
-	return inputs;
-
 }  //End trimLines()
 
 void displayLines(vector<string> inputs, int numLines) {
@@ -86,8 +81,8 @@ void displayLines(vector<string> inputs, int numLines) {
 }  //End displayLines()
 
 int main(int argc, char *argv[]) {
-	string fileName(argv[1]);
-	//string fileName("C:\\Users\\OWNER\\Desktop\\Computer Science\\Code Eval Proj\\Moderate Challenges\\Longest Lines\\LongestLines.txt");
+	//string fileName(argv[1]);
+	string fileName("C:\\Users\\OWNER\\Desktop\\Computer Science\\Code Eval Proj\\code_eval_solutions\\moderate_challenges\\Longest Lines\\LongestLines.txt");
 
 	int numLines = getNumLines(fileName);
 
@@ -95,15 +90,15 @@ int main(int argc, char *argv[]) {
 	vector<string> inputs = getLines(fileName);
 
 	//Trim trailing whitespace from strings
-	inputs = trimLines(inputs);
+	trimLines(inputs);
 
 	//Sort vector longest to shortest
-	inputs = sortLines(inputs);
+	sortLines(inputs);
 
 	//Print n longest lines where n = numLines
 	displayLines(inputs, numLines);
 
-	//system("pause");
+	system("pause");
 	return 0;
 
 }  //End main()
