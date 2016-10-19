@@ -80,9 +80,9 @@ void displayLines(vector<string> inputs, int numLines) {
 }  //End displayLines()
 
 int main(int argc, char *argv[]) {
-	//string fileName(argv[1]);
-	string fileName("C:\\Users\\OWNER\\Desktop\\Computer Science\\Code Eval Proj\\code_eval_solutions\\moderate_challenges\\Longest Lines\\LongestLines.txt");
-
+	string fileName(argv[1]);
+	
+	//Get number of longest lines to display
 	int numLines = getNumLines(fileName);
 
 	//Store lines from input file in a vector
@@ -97,7 +97,6 @@ int main(int argc, char *argv[]) {
 	//Print n longest lines where n = numLines
 	displayLines(inputs, numLines);
 
-	system("pause");
 	return 0;
 
 }  //End main()
