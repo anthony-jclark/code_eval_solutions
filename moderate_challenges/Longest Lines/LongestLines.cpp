@@ -1,9 +1,8 @@
 /*
 Program: LongestLines.cpp
 Date: 9/27/2016
+Last Modified: 10/19/2016
 */
-
-//TODO: Program works so long as lines do not have trailing white space. Must find a way to remove trailing white space.
 
 #include <iostream>
 #include <string>
