@@ -16,7 +16,7 @@ using std::endl;
 bool primeCheck(long &current) {
 	/*
 	Takes the current number and tries to evenly
-	devide it by every number less than it and greater
+	divide it by every number less than it and greater
 	than 1. If nothing between 1 and current - 1 evenly
 	divides it than current is prime.
 	*/
