@@ -12,10 +12,11 @@ using std::string;
 #include <vector>
 using std::vector;
 
-vector<string> getLines(string &fileName, long &numLines);
+vector<string> getLines(istream &source, long &numLines);
 void sortLines(vector<string> &inputs);
 void trimLines(vector<string> &inputs);
-void displayLines(vector<string> &inputs, long &numLines);
+void displayLines(vector<string> &inputs, long &numLines, ostream &out);
+void longestLines(istream &inStream, ostream &outStream);
 
 
 #endif

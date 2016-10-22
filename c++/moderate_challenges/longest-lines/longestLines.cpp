@@ -26,11 +26,12 @@ using std::string;
 using std::vector;
 using std::istringstream;
 using std::sort;
+using std::istream;
+using std::ostream;
 
 //Pulls each line from the text file and stores in abort
 //vectore of strings
-vector<string> getLines(string &fileName, long &numLines) {
-	ifstream source(fileName);
+vector<string> getLines(istream &source, long &numLines) {
 
 	vector<string> inputs;
 
@@ -93,24 +94,19 @@ void trimLines(vector<string> &inputs) {
 }  //End trimLines()
 
 //Displays n longest lines
-void displayLines(vector<string> &inputs, long &numLines) {
-	for (auto i = 0; i < numLines; i++) cout << inputs.at(i) << endl;
+void displayLines(vector<string> &inputs, long &numLines, ostream &out) {
+	for (auto i = 0; i < numLines; i++)
+		out << inputs.at(i) << endl;
 
 }  //End displayLines()
 
-//
-// Adding this definition for easy unit testing purposes
-// This will not affect the normal compiling flow
-//
-#ifndef UNIT_TESTING
-int main(int argc, char *argv[]) {
-	string fileName(argv[1]);
-
+// Run the entire process
+void longestLines(istream &inStream, ostream &outStream) {
 	//Get number of longest lines to display
-	long numLines;// = getNumLines(fileName);
+	long numLines;
 
 	//Store lines from input file in a vector
-	vector<string> inputs = getLines(fileName, numLines);
+	vector<string> inputs = getLines(inStream, numLines);
 
 	//Trim trailing whitespace from strings
 	trimLines(inputs);
@@ -119,9 +115,22 @@ int main(int argc, char *argv[]) {
 	sortLines(inputs);
 
 	//Print n longest lines where n = numLines
-	displayLines(inputs, numLines);
+	displayLines(inputs, numLines, outStream);
+}
 
+//
+// Adding this definition for easy unit testing purposes
+// This will not affect the normal compiling flow
+//
+#ifndef UNIT_TESTING
+
+
+int main(int argc, char *argv[]) {
+	string fileName(argv[1]);
+	ifstream inputFile(fileName);
+	longestLines(inputFile, cout);
 	return 0;
-
 }  //End main()
+
+
 #endif
