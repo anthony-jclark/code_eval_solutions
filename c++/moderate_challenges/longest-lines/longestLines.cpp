@@ -4,9 +4,9 @@ Date: 9/27/2016
 Last Modified: 10/19/2016
 
 Program receives lines of text from a file and finds the
-longest ones. The first line of the file contains a number 
-which determines how many of the longest lines to display 
-starting with the longest. Trailing white space is also 
+longest ones. The first line of the file contains a number
+which determines how many of the longest lines to display
+starting with the longest. Trailing white space is also
 removed so:
 	"A short line        " is not longer than
 	"A longer line"
@@ -84,7 +84,7 @@ void trimLines(vector<string> &inputs) {
 		auto strEnd = line.find_last_not_of(whitespace);
 		//Calculate how many characters are between begining and end
 		auto strRange = strEnd - strBegin + 1;
-		
+
 		//Overwrite the line at the index with a substring with trailing
 		//whitespace removed
 		inputs.at(i) = line.substr(strBegin, strRange);
@@ -98,9 +98,14 @@ void displayLines(vector<string> &inputs, long &numLines) {
 
 }  //End displayLines()
 
+//
+// Adding this definition for easy unit testing purposes
+// This will not affect the normal compiling flow
+//
+#ifndef UNIT_TESTING
 int main(int argc, char *argv[]) {
 	string fileName(argv[1]);
-		
+
 	//Get number of longest lines to display
 	long numLines;// = getNumLines(fileName);
 
@@ -119,3 +124,4 @@ int main(int argc, char *argv[]) {
 	return 0;
 
 }  //End main()
+#endif

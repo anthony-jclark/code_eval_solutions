@@ -1,9 +1,22 @@
 
-all:program tests
+EXENAME = longestlines.out
+CXXFLAGS = -Wall -std=c++14
+TESTHEADER = ../../../extras/Catch/single_include/
+
+all:program test
 
 program:
+	@echo "Compiling the main program"
 	@echo "Adding extension .out to the binary for .gitignore"
-	g++ -Wall -std=c++14 -o longestlines.out longestLines.cpp
+	$(CXX) $(CXXFLAGS) -o $(EXENAME) longestLines.cpp
 
-tests:
-	@echo "Nothing to do for tests yet"
+test:
+	@echo "Compiling the test executable"
+	$(CXX) $(CXXFLAGS) -o test_$(EXENAME) -I$(TESTHEADER) test_longestLines.cpp
+
+clean:
+	@echo "No object files to clean for this project"
+
+distclean: clean
+	$(RM) $(EXENAME)
+	$(RM) test_$(EXENAME)
