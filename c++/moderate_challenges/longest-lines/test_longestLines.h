@@ -12,6 +12,10 @@ using std::string;
 #include <vector>
 using std::vector;
 
+#include <iosfwd>
+using std::istream;
+using std::ostream;
+
 vector<string> getLines(istream &source, long &numLines);
 void sortLines(vector<string> &inputs);
 void trimLines(vector<string> &inputs);
